@@ -21,10 +21,10 @@
 			<div class="col-sm">
 			
 				<h3>Login</h3>
-				<form method="post" action="/login">
+				<form action="/bookstore/LoginServlet" method="POST">
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">E-mail</label>
-				    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="email@dominio.com">
+				    <label for="exampleInputEmail1">Nome de usuario</label>
+				    <input name="nomeusuario" type="text" class="form-control" placeholder="Nome de Usuário">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Senha</label>
@@ -37,20 +37,16 @@
 			<div class="col-sm">
 				
 				<h3>Cadastrar</h3>
-				<form method="post" action="/cadastrarUsuario">
+				<form method="post" action="/bookstore/CadastrarUsuario">
 					<div class="form-group">
-					    <label for="exampleInputEmail1">Nome</label>
-					    <input name="nome" class="form-control" aria-describedby="emailHelp" placeholder="Informe seu nome">
+				    	<label for="exampleInputEmail1">Nome de usuario</label>
+				    	<input name="nomeusuario" type="text" class="form-control" placeholder="Nome de Usuário">
 				  	</div>
-					  <div class="form-group">
-					    <label for="exampleInputEmail1">E-mail</label>
-					    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="email@dominio.com">
-					  </div>
-					  <div class="form-group">
+					<div class="form-group">
 					    <label for="exampleInputPassword1">Senha</label>
 					    <input name="senha" type="password" class="form-control" placeholder="Password">
-					  </div>
-				  <button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				  	<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 				
 			</div>
