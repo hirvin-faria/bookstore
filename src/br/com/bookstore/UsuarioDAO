@@ -1,0 +1,10 @@
+package br.com.bookstore;
+
+import Dao;
+import java.sql.*;
+
+class UsuarioDAO {
+	private static Dao dao = new Dao();
+	
+	public int  
+}

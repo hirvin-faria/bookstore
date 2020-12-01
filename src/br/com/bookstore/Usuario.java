@@ -8,6 +8,7 @@ public class Usuario {
     
 
 	private Integer id;
+	private String name;
     private String username;
     private String password;
     private Integer tipo;  
@@ -46,6 +47,14 @@ public class Usuario {
             }
         }
     }
+	
+	public String getName() {
+		return username;
+	}
+
+	public void setName(String username) {
+		this.username = username;
+	}
     
     public String getUsername() {
 		return username;
@@ -73,5 +82,9 @@ public class Usuario {
 
 	public Integer getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id; 
 	}
 }
