@@ -7,7 +7,18 @@ CREATE DATABASE db_bookstore
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
+CREATE TABLE "public"."users_conf" (
+    "id" serial NOT NULL,
+    "name" text DEFAULT '',
+    "password" text,
+    "profile" text,
+    "username" text,
+    PRIMARY KEY ("id")
+);
 
+    
+    
+    
 CREATE TABLE public.users_conf
 (
     id serial NOT NULL,

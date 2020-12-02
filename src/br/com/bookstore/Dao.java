@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package br.com.bookstore;
 
 import java.sql.*;
 
@@ -35,7 +35,7 @@ public class Dao {
                 {
                     erro="";
                     Class.forName("org.postgresql.Driver");
-                    connection=DriverManager.getConnection("jdbc:postgresql://127.0.0.1/db_bookstore","postgres","masterkey");
+                    connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/db_bookstore","hirvinfaria","");
                     return true;
                 }
                 catch(Exception e)

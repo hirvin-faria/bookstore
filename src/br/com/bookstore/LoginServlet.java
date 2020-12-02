@@ -24,27 +24,23 @@ public class LoginServlet extends HttpServlet {
 		//carrega dados de usuario
 		String nomeUsuario = request.getParameter("nomeusuario");
 		String senha = request.getParameter("senha");
-		Usuario usuario = new Usuario();
+
+		UsuarioDAO UsuarioDAO = new UsuarioDAO();
+		Usuario usuario;
 		
-		// seta os dados do usuário
-		usuario.setUsername(nomeUsuario);
-		usuario.setPassword(senha);
-		
-		// Chama o metodo de login
-		Boolean loginStatus = true; //usuario.login();
-		
-		
-		if(loginStatus) {
-			// Cria sessão com os dados do usuário logado
-			RequestDispatcher reqDispat = request.getRequestDispatcher("listaLivros.jsp");
-			request.getSession().setAttribute("usuario", usuario.getUsername());
-			request.getSession().setAttribute("tipo", usuario.getTipo());
+		try {
+			
+			usuario = UsuarioDAO.login(nomeUsuario, senha);
+			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
+			request.getSession().setAttribute("nomeUsuario", usuario.getUsername());
+			request.getSession().setAttribute("tipoUsuario", usuario.getTipo());
 			reqDispat.forward(request, response);
-				
-		} else {
-			// Solicitar ao Lucas a implementação do Erro de Login
-			// Envia erro de login
-			RequestDispatcher reqDispat = request.getRequestDispatcher("login.jsp");
+		
+		} catch (Throwable e) {
+	
+			e.printStackTrace();
+		
+			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
 			request.setAttribute("errologin", "Erro ao Realizar o Login");
 			reqDispat.forward(request, response);
 		

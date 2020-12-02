@@ -11,8 +11,8 @@ public class Usuario {
 	private String name;
     private String username;
     private String password;
-    private Integer tipo;  
-    
+    private Integer tipo;
+    private UsuarioDAO DAO;
     
     public Boolean cadastra() {
     	
@@ -21,31 +21,7 @@ public class Usuario {
     	return true;
     }
     
-    public Boolean login() {
-    	
-    	try {
-            Dao dao= new UsuarioDAO();  // Adicionar Classe da Juliana
-            if(dao.connect()){
-            	try {    
-            		dao.createPreparedStatement("select 1 from usuarios where login=? and senha=?"); // Consulta
-            		dao.setString(1, this.username); // Valor um
-            		dao.setString(2, this.password); // valor senha
-            		ResultSet rs=dao.executeQuery();
-            		if(rs.next()) {
-            			return true;                       
-            		} else {    
-            			return false;
-            		}
-            		
-            		rs.close();
-            		dao.close();
-            	} catch(Exception e) {
-                  
-            	}    
-            } else {
-            	return true;
-            }
-        }
+    public void login() {
     }
 	
 	public String getName() {

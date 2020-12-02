@@ -1,4 +1,4 @@
-package com.sigelu.educacao.presentation;
+package br.com.bookstore;
 
 import java.sql.*;
 
