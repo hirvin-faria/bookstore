@@ -30,7 +30,7 @@
 				    <label for="exampleInputPassword1">Senha</label>
 				    <input name="senha" type="password" class="form-control" placeholder="Password">
 				  </div>
-				  <button type="submit" class="btn btn-primary">Submit</button>
+				  <button type="submit" class="btn btn-primary">Logar</button>
 				</form>
 				
 			</div>
@@ -46,7 +46,7 @@
 					    <label for="exampleInputPassword1">Senha</label>
 					    <input name="senha" type="password" class="form-control" placeholder="Password">
 					</div>
-				  	<button type="submit" class="btn btn-primary">Submit</button>
+				  	<button type="submit" class="btn btn-primary">Cadastrar</button>
 				</form>
 				
 			</div>

@@ -7,6 +7,18 @@ import static java.sql.DriverManager.println;
 class UsuarioDAO {
 
     private static final Dao dao = new Dao();
+    private static String usarname = "usuario";
+    private static String password = "123";
+    
+    
+    public Boolean staticLogin (String nomeUsuario, String passwd) {
+    	
+    	if (nomeUsuario.equals(usarname) && passwd.equals(password)) {     
+            return true;
+    	} else {
+    		return false;
+    	}
+    }
 
     //retorna o id do usuario ou -1 se não existir
     public Usuario login(String username, String passwd) throws Throwable {
@@ -24,7 +36,7 @@ class UsuarioDAO {
                     user.setName(rs.getString("name"));
                     user.setUsername(username);
                     user.setPassword(passwd);
-                    user.setTipo(rs.getInt("profile"));
+                    user.setTipo(rs.getString("profile")); // Int config via banco
                     rs.close();
                     return user;
                 } else {
@@ -37,6 +49,7 @@ class UsuarioDAO {
         }
         throw new Throwable("Erro ao conectar ao banco: " + dao.getErro());
     }
+
 
     public Integer register(String nome, String username, String passwd, Integer tipo) throws Throwable {
         if(dao.connect()){

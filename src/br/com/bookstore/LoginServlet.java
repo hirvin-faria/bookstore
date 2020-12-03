@@ -24,25 +24,41 @@ public class LoginServlet extends HttpServlet {
 		//carrega dados de usuario
 		String nomeUsuario = request.getParameter("nomeusuario");
 		String senha = request.getParameter("senha");
+		System.out.println(nomeUsuario);
+		System.out.println(senha);
 
 		UsuarioDAO UsuarioDAO = new UsuarioDAO();
-		Usuario usuario;
 		
-		try {
+		Boolean statusLogin = UsuarioDAO.staticLogin(nomeUsuario, senha);
+		System.out.println(statusLogin);
+		if(statusLogin) {
+			Usuario usuario = new Usuario();
+			usuario.setId(0);
+			usuario.setName("Convidado");
+			usuario.setUsername(nomeUsuario);
+			usuario.setPassword(senha);
+			usuario.setTipo("user");
 			
-			usuario = UsuarioDAO.login(nomeUsuario, senha);
+			
 			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
 			request.getSession().setAttribute("nomeUsuario", usuario.getUsername());
 			request.getSession().setAttribute("tipoUsuario", usuario.getTipo());
 			reqDispat.forward(request, response);
 		
-		} catch (Throwable e) {
-	
-			e.printStackTrace();
-		
+		} else {
 			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
 			request.setAttribute("errologin", "Erro ao Realizar o Login");
 			reqDispat.forward(request, response);
+		}
+		
+		
+		
+		
+		try {
+			
+		} catch (Throwable e) {
+	
+			e.printStackTrace();
 		
 		}
 	}

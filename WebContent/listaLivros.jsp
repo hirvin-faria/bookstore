@@ -26,7 +26,7 @@
 	<section class="container mt-3">
 		<div class="row">
     		<div class="col-8">
-      			<h2>Livros Disponiveis</h2>                
+      			<h2>Livros Disponíveis</h2>                
     			<p>Nossos livros disponiveis para compra</p>
     		</div>
     		<div class="col-4 ">
@@ -48,7 +48,7 @@
 	               	<td class="info-titulo"><%= livro.getTitulo() %></td>
 	                <td class="info-genero"><%= livro.getAutor() %></td>
 	                <td class="info-editora"><%= livro.getPreco() %></td>
-	                <td class="info-avaliacao"><button type="button" class="btn btn-success">Comprar</button></td>
+	                <td class="info-avaliacao"><a href="/bookstore/carrinho.jsp" type="button" class="btn btn-success">Comprar</a></td>
               	</tr>
             <%}%>
           	</tbody>

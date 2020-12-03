@@ -35,7 +35,7 @@ public class Dao {
                 {
                     erro="";
                     Class.forName("org.postgresql.Driver");
-                    connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/db_bookstore","hirvinfaria","");
+                    connection=DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/db_bookstore","hirvinfaria","");
                     return true;
                 }
                 catch(Exception e)

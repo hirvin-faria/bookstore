@@ -7,6 +7,10 @@ public class Livro {
 	private String autor;
 	private String preco;
 	
+	public void finalizaCompra(Integer quantidadeLivro) {
+		
+	}
+	
 	public Integer getId() {
 		return id;
 	}

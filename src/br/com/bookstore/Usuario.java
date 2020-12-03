@@ -5,24 +5,12 @@ import java.sql.ResultSet;
 
 public class Usuario {
 	
-    
-
 	private Integer id;
 	private String name;
     private String username;
     private String password;
-    private Integer tipo;
-    private UsuarioDAO DAO;
+    private String tipo;
     
-    public Boolean cadastra() {
-    	
-    	// criar usuário no banco
-    	
-    	return true;
-    }
-    
-    public void login() {
-    }
 	
 	public String getName() {
 		return username;
@@ -48,11 +36,11 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Integer getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(Integer tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
