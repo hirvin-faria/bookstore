@@ -26,7 +26,7 @@ public class UsuarioDAO {
     public Usuario login(String username, String passwd) throws Throwable {
         if(dao.connect()){
             try {
-                dao.createPreparedStatement("select id, name, profile from users_conf where username=? and password=?");
+                dao.createPreparedStatement("select id, profile from users_conf where username=? and password=?");
                 dao.setString(1, username);
                 dao.setString(2, passwd);
 
@@ -53,14 +53,14 @@ public class UsuarioDAO {
     }
 
 
-    public Boolean register(String nome, String username, String passwd, Integer tipo) throws Throwable {
+    public Boolean register(String username, String passwd, Integer tipo) throws Throwable {
         if(dao.connect()){
             try {
-                dao.createPreparedStatement("insert into users_conf(name, username, password, tipo) values (1, 2, 3, 4) returning id");
-                dao.setString(1, nome);
-                dao.setString(2, username);
-                dao.setString(3, passwd);
-                dao.setString(4, tipo.toString());
+                dao.createPreparedStatement("insert into users_conf(username, password, profile) values (?, ?, ?) returning id");
+				
+                dao.getStatement().setString(1, username);
+                dao.getStatement().setString(2, passwd);
+                dao.getStatement().setInt(3, tipo);
 
                 ResultSet rs=dao.executeQuery();
                 dao.close();

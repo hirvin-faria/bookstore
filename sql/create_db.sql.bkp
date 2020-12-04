@@ -6,23 +6,12 @@ CREATE DATABASE db_bookstore
     LC_CTYPE = 'Portuguese_Brazil.1252'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
-
-CREATE TABLE "public"."users_conf" (
-    "id" serial NOT NULL,
-    "name" text DEFAULT '',
-    "password" text,
-    "profile" text,
-    "username" text,
-    PRIMARY KEY ("id")
-);
-
     
     
-    
+	
 CREATE TABLE public.users_conf
 (
     id serial NOT NULL,
-    name character varying(50)[] COLLATE pg_catalog."default" NOT NULL,
     username character varying(16)[] COLLATE pg_catalog."default" NOT NULL,
     password character varying(16)[] COLLATE pg_catalog."default" NOT NULL,
     profile integer COLLATE pg_catalog."default" NOT NULL,
