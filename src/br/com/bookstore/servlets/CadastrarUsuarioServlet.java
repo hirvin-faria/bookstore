@@ -34,8 +34,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		UsuarioDAO dao = new UsuarioDAO();
 		
 		try {
-			//Usuario user = dao.register(nomeUsuario, senha, 1);
-			Usuario user = new Usuario();
+			Usuario user = dao.register(nomeUsuario, senha, 1);
 			
 			if(user != null) {
 				// Cria sessão com os dados do usuário logado
