@@ -40,10 +40,9 @@ SET default_with_oids = false;
 
 CREATE TABLE public.books_conf (
     id integer NOT NULL,
-    preco numeric NOT NULL,
-    user_id integer,
     nome character varying NOT NULL,
-    autor character varying
+    autor character varying NOT NULL,
+    preco character varying NOT NULL
 );
 
 
@@ -178,7 +177,7 @@ ALTER TABLE ONLY public.books_conf
 --
 
 ALTER TABLE ONLY public.books_conf
-    ADD CONSTRAINT books_conf_unique UNIQUE (nome, autor, user_id);
+    ADD CONSTRAINT books_conf_unique UNIQUE (nome, autor);
 
 
 --
@@ -203,14 +202,6 @@ ALTER TABLE ONLY public.users_conf
 
 ALTER TABLE ONLY public.users_purchases
     ADD CONSTRAINT users_purchases_pkey PRIMARY KEY (id);
-
-
---
--- Name: books_conf books_conf_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.books_conf
-    ADD CONSTRAINT books_conf_fkey FOREIGN KEY (id) REFERENCES public.users_conf(id);
 
 
 --

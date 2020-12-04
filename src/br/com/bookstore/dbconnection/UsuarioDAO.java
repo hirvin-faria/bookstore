@@ -45,8 +45,7 @@ public class UsuarioDAO {
                     return null;
                 }
             } catch (Exception e) {
-                println(e.getMessage());
-                return null;
+            	throw new Throwable("Erro na query: " + e.getMessage());
             }
         }
         throw new Throwable("Erro ao conectar ao banco: " + dao.getErro());

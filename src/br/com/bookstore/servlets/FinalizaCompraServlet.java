@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.bookstore.models.Livro;
+import br.com.bookstore.dbconnection.CompraDAO;
 
 /**
  * Servlet implementation class FinalizaCompraServlet
@@ -38,10 +39,17 @@ public class FinalizaCompraServlet extends HttpServlet {
 		livroComprado.setAutor(request.getParameter("autor"));
 		Integer quantidadeLivro = Integer.parseInt(request.getParameter("quantidade"));
 		
-		livroComprado.finalizaCompra(quantidadeLivro);
+		//CompraDAO dao = new CompraDAO();
+		try {
+			//Usuario user = dao.register(userId, livroId, quantidadeLivro, preco);
+			livroComprado.finalizaCompra(quantidadeLivro);
+			
+			RequestDispatcher reqDispat = request.getRequestDispatcher("finalizacao.jsp");
+			reqDispat.forward(request, response);
+			
+		}catch(Throwable e) { System.out.println(e); }
 		
-		RequestDispatcher reqDispat = request.getRequestDispatcher("finalizacao.jsp");
-		reqDispat.forward(request, response);
+		
 	}
 
 }
