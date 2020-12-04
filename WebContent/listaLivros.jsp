@@ -30,7 +30,7 @@
     			<p>Nossos livros disponiveis para compra</p>
     		</div>
     		<div class="col-4 ">
-      			<a href="login.jsp"><button type="button" class="btn btn-primary" ">Login</button></a>
+      			<a href="login.jsp"><button type="button" class="btn btn-primary">Login</button></a>
     		</div>
     	</div>
 		<table class="table mt-5">
