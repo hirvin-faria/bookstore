@@ -34,23 +34,23 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		UsuarioDAO dao = new UsuarioDAO();
 		
 		try {
-			Usuario user = dao.register(nomeUsuario, senha, 1);
+			//Usuario user = dao.register(nomeUsuario, senha, 1);
+			Usuario user = new Usuario();
 			
 			if(user != null) {
 				// Cria sessão com os dados do usuário logado
-				RequestDispatcher reqDispat = request.getRequestDispatcher("listaLivros.jsp");
-				request.getSession().setAttribute("usuario", user.getUsername());
-				request.getSession().setAttribute("tipo", user.getTipo());
+				RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
+				request.getSession().setAttribute("nomeUsuario", user.getUsername());
+				request.getSession().setAttribute("tipoUsuario", user.getTipo());
 				reqDispat.forward(request, response);
 				System.out.println("deu bom");
-							
 			} else {
 				// Solicitar ao Lucas a implementação do Erro de Cadastro
 				// Envia erro de cadastro
-				System.out.println("deu ruim");
-				RequestDispatcher reqDispat = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
 				request.setAttribute("errologin", "Erro ao Realizar o Login");
 				reqDispat.forward(request, response);
+				System.out.println("deu ruim");
 			}
 		}catch(Throwable e) { System.out.println(e); }
 	}

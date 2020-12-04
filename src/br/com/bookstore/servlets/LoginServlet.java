@@ -47,8 +47,6 @@ public class LoginServlet extends HttpServlet {
 			}
 		}catch(Throwable e) { System.out.println(e); }
 		
-		
-		
 		try {
 			
 		} catch (Throwable e) {
