@@ -1,4 +1,4 @@
-package br.com.bookstore;
+package br.com.bookstore.models;
 
 public class Livro {
 
@@ -6,6 +6,10 @@ public class Livro {
 	private String titulo;
 	private String autor;
 	private String preco;
+	
+	public void finalizaCompra(Integer quantidadeLivro) {
+		
+	}
 	
 	public Integer getId() {
 		return id;

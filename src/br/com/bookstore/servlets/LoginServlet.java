@@ -1,4 +1,4 @@
-package br.com.bookstore;
+package br.com.bookstore.servlets;
 
 import java.io.IOException;
 
@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.com.bookstore.dbconnection.UsuarioDAO;
+import br.com.bookstore.models.Usuario;
 
 /**
  * Servlet implementation class LoginServlet
@@ -24,29 +27,41 @@ public class LoginServlet extends HttpServlet {
 		//carrega dados de usuario
 		String nomeUsuario = request.getParameter("nomeusuario");
 		String senha = request.getParameter("senha");
-		Usuario usuario = new Usuario();
+		System.out.println(nomeUsuario);
+		System.out.println(senha);
+
+		UsuarioDAO UsuarioDAO = new UsuarioDAO();
 		
-		// seta os dados do usuário
-		usuario.setUsername(nomeUsuario);
-		usuario.setPassword(senha);
-		
-		// Chama o metodo de login
-		Boolean loginStatus = true; //usuario.login();
-		
-		
-		if(loginStatus) {
-			// Cria sessão com os dados do usuário logado
-			RequestDispatcher reqDispat = request.getRequestDispatcher("listaLivros.jsp");
-			request.getSession().setAttribute("usuario", usuario.getUsername());
-			request.getSession().setAttribute("tipo", usuario.getTipo());
+		Boolean statusLogin = UsuarioDAO.staticLogin(nomeUsuario, senha);
+		System.out.println(statusLogin);
+		if(statusLogin) {
+			Usuario usuario = new Usuario();
+			usuario.setId(0);
+			usuario.setName("Convidado");
+			usuario.setUsername(nomeUsuario);
+			usuario.setPassword(senha);
+			usuario.setTipo("user");
+			
+			
+			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
+			request.getSession().setAttribute("nomeUsuario", usuario.getUsername());
+			request.getSession().setAttribute("tipoUsuario", usuario.getTipo());
 			reqDispat.forward(request, response);
-				
+		
 		} else {
-			// Solicitar ao Lucas a implementação do Erro de Login
-			// Envia erro de login
-			RequestDispatcher reqDispat = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
 			request.setAttribute("errologin", "Erro ao Realizar o Login");
 			reqDispat.forward(request, response);
+		}
+		
+		
+		
+		
+		try {
+			
+		} catch (Throwable e) {
+	
+			e.printStackTrace();
 		
 		}
 	}
