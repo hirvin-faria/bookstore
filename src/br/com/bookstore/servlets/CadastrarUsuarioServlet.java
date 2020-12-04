@@ -27,25 +27,20 @@ public class CadastrarUsuarioServlet extends HttpServlet {
 		//Carrega dados de usuario
 		String nomeUsuario = request.getParameter("nomeusuario");
 		String senha = request.getParameter("senha");
-		Usuario usuario = new Usuario();
 		System.out.println(nomeUsuario);
 		System.out.println(senha);
-				
-		// Seta os dados do usuário para cadastro
-		usuario.setUsername(nomeUsuario);
-		usuario.setPassword(senha);
 				
 		// Chama o metodo de login
 		UsuarioDAO dao = new UsuarioDAO();
 		
 		try {
-			Boolean cadastroStatus = dao.register(nomeUsuario, senha, 1);
+			Usuario user = dao.register(nomeUsuario, senha, 1);
 			
-			if(cadastroStatus) {
+			if(user != null) {
 				// Cria sessão com os dados do usuário logado
 				RequestDispatcher reqDispat = request.getRequestDispatcher("listaLivros.jsp");
-				request.getSession().setAttribute("usuario", usuario.getUsername());
-				request.getSession().setAttribute("tipo", usuario.getTipo());
+				request.getSession().setAttribute("usuario", user.getUsername());
+				request.getSession().setAttribute("tipo", user.getTipo());
 				reqDispat.forward(request, response);
 				System.out.println("deu bom");
 							

@@ -46,17 +46,17 @@ public class UsuarioDAO {
                 }
             } catch (Exception e) {
                 println(e.getMessage());
-                throw new Throwable("Erro ao fazer login: " + e.getMessage(), e);
+                return null;
             }
         }
         throw new Throwable("Erro ao conectar ao banco: " + dao.getErro());
     }
 
 
-    public Boolean register(String username, String passwd, Integer tipo) throws Throwable {
+    public Usuario register(String username, String passwd, Integer tipo) throws Throwable {
         if(dao.connect()){
             try {
-                dao.createPreparedStatement("insert into users_conf(username, password, profile) values (?, ?, ?) returning id");
+                dao.createPreparedStatement("insert into users_conf(username, password, profile) values (?, ?, ?) returning *");
 				
                 dao.getStatement().setString(1, username);
                 dao.getStatement().setString(2, passwd);
@@ -65,15 +65,20 @@ public class UsuarioDAO {
                 ResultSet rs=dao.executeQuery();
                 dao.close();
                 if(rs.next()) {
-                    Integer id = rs.getInt(1);
+                	Usuario user = new Usuario();
+                    user.setId(rs.getInt("id"));
+                    user.setName(rs.getString("name"));
+                    user.setUsername(username);
+                    user.setPassword(passwd);
+                    user.setTipo(rs.getString("profile")); // Int config via banco
                     rs.close();
-                    return true;
+                    return user;
                 } else {
-                    return false;
+                    return null;
                 }
             } catch (Exception e) {
                 println(e.getMessage());
-                throw new Throwable("Erro ao fazer cadastro: " + e.getMessage(), e);
+                return null;
             }
         }
         throw new Throwable("Erro ao conectar ao banco: " + dao.getErro());

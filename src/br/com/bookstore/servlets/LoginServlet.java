@@ -32,28 +32,20 @@ public class LoginServlet extends HttpServlet {
 
 		UsuarioDAO UsuarioDAO = new UsuarioDAO();
 		
-		Boolean statusLogin = UsuarioDAO.staticLogin(nomeUsuario, senha);
-		System.out.println(statusLogin);
-		if(statusLogin) {
-			Usuario usuario = new Usuario();
-			usuario.setId(0);
-			usuario.setName("Convidado");
-			usuario.setUsername(nomeUsuario);
-			usuario.setPassword(senha);
-			usuario.setTipo("user");
+		try {
+			Usuario user = UsuarioDAO.login(nomeUsuario, senha);
+			if(user != null) {
+				RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
+				request.getSession().setAttribute("nomeUsuario", user.getUsername());
+				request.getSession().setAttribute("tipoUsuario", user.getTipo());
+				reqDispat.forward(request, response);
 			
-			
-			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
-			request.getSession().setAttribute("nomeUsuario", usuario.getUsername());
-			request.getSession().setAttribute("tipoUsuario", usuario.getTipo());
-			reqDispat.forward(request, response);
-		
-		} else {
-			RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
-			request.setAttribute("errologin", "Erro ao Realizar o Login");
-			reqDispat.forward(request, response);
-		}
-		
+			} else {
+				RequestDispatcher reqDispat = request.getRequestDispatcher("perfilUsuario.jsp");
+				request.setAttribute("errologin", "Erro ao Realizar o Login");
+				reqDispat.forward(request, response);
+			}
+		}catch(Throwable e) { System.out.println(e); }
 		
 		
 		
