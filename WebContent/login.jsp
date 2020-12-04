@@ -37,7 +37,7 @@
 			<div class="col-sm">
 				
 				<h3>Cadastrar</h3>
-				<form method="post" action="/bookstore/CadastrarUsuario">
+				<form method="POST" action="/bookstore/CadastrarUsuario">
 					<div class="form-group">
 				    	<label for="exampleInputEmail1">Nome de usuario</label>
 				    	<input name="nomeusuario" type="text" class="form-control" placeholder="Nome de Usuário">

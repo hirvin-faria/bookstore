@@ -1,7 +1,9 @@
-package br.com.bookstore;
+package br.com.bookstore.dbconnection;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.bookstore.models.Livro;
 
 public class LivroDAO {
 	

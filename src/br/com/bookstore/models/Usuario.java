@@ -1,4 +1,4 @@
-package br.com.bookstore;
+package br.com.bookstore.models;
 
 import java.io.PrintWriter;
 import java.sql.ResultSet;

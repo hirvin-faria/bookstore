@@ -1,4 +1,4 @@
-package br.com.bookstore;
+package br.com.bookstore.servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.com.bookstore.dbconnection.LivroDAO;
+import br.com.bookstore.models.Livro;
 
 /**
  * Servlet implementation class ListaLivrosServlet

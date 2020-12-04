@@ -1,10 +1,12 @@
-package br.com.bookstore;
+package br.com.bookstore.dbconnection;
 
 import java.sql.*;
 
+import br.com.bookstore.models.Usuario;
+
 import static java.sql.DriverManager.println;
 
-class UsuarioDAO {
+public class UsuarioDAO {
 
     private static final Dao dao = new Dao();
     private static String usarname = "usuario";
@@ -51,7 +53,7 @@ class UsuarioDAO {
     }
 
 
-    public Integer register(String nome, String username, String passwd, Integer tipo) throws Throwable {
+    public Boolean register(String nome, String username, String passwd, Integer tipo) throws Throwable {
         if(dao.connect()){
             try {
                 dao.createPreparedStatement("insert into users_conf(name, username, password, tipo) values (1, 2, 3, 4) returning id");
@@ -65,9 +67,9 @@ class UsuarioDAO {
                 if(rs.next()) {
                     Integer id = rs.getInt(1);
                     rs.close();
-                    return id;
+                    return true;
                 } else {
-                    return -1;
+                    return false;
                 }
             } catch (Exception e) {
                 println(e.getMessage());

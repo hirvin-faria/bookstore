@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, br.com.bookstore.Livro" %>
+<%@ page import="java.util.List,br.com.bookstore.models.Livro" %>
 
 <% 
 
@@ -136,9 +136,9 @@
 		<table class="table mt-5">
         	<thead>
 	           	<tr>
-	            	<th scope="col">Título</th>
+	            	<th scope="col">Tï¿½tulo</th>
 	                <th scope="col">Autor</th>
-	                <th scope="col">Preço</th>
+	                <th scope="col">Preï¿½o</th>
 	                <th scope="col">Comprar</th>
 	         	</tr>
       		</thead>
@@ -170,7 +170,7 @@
                     <img src="`+val.img+`"/>
                     <p>`+val.nome+`</p>
                     <br>
-                    <p>Preço R$: `+val.precoUnitario+`</p>
+                    <p>Preï¿½o R$: `+val.precoUnitario+`</p>
                     <br>
                     <a key="`+val.id+`" href="#">Comprar<a/>
                 </div>
@@ -192,7 +192,7 @@ inicializarLoja();
                 <div class="info-single-checkout"
                 <p>Livro: `+val.nome+`</p>
                 <p>Quantidade: `+val.quantidade+` </p>
-                <p>Preço final: `+val.quantidade * val.precoUnitario+` </p>        
+                <p>Preï¿½o final: `+val.quantidade * val.precoUnitario+` </p>        
                 <p>Comprador: `+val.comprador+` </p>        
                 <br>        
                 <a id="finalizar-compra" key="`+val.id+`" href="index2.html">Finalizar a compra<a/>        
